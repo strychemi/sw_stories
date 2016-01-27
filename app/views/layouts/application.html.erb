@@ -8,7 +8,7 @@
 </head>
 <body>
 <% flash.each do |type, message| %>
-  <p class='<%= type %>'><%= "#{type}! #{message}" %></div>
+  <p class='<%= type %>'><%= "#{message}" %></div>
 <% end %>
 <%= yield %>
 

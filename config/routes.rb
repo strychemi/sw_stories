@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+
+  root "welcomes#index"
+
   devise_for :users
+
+  resources :users do
+    resources :prompts
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
