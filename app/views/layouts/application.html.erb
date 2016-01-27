@@ -11,6 +11,9 @@
   <p class='<%= type %>'><%= "#{message}" %></div>
 <% end %>
 <%= yield %>
+<% if user_signed_in? %>
+  <%= render partial: 'prompts/new_prompts' %>
+<% end %>
 
 </body>
 </html>

@@ -17,6 +17,7 @@ class Swapi
   def get_noun(param)
     attribute = nil
     until !attribute.nil?
+      sleep(0.5)
       random = rand(1..@nouns[param].to_i)
       response = HTTParty.get("#{BASE_URI}/#{param}/#{random}")
       attribute = JSON.parse(response.body)["name"]
