@@ -1,0 +1,5 @@
+<%= link_to "Create a New Draft", new_user_prompt_draft_path %>
+<h2><%= @prompt.text %></h2>
+<% @drafts.each do |d| %>
+  <p><%= d.story %></p>
+<% end %>

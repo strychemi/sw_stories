@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       }
 
   resources :users do
-    resources :prompts
+    resources :prompts do
+      resources :drafts
+    end
     get '/generate' => 'prompts#generate'
   end
 

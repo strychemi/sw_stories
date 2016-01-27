@@ -5,8 +5,7 @@ class PromptsController < ApplicationController
   end
 
   def index
-    #@user = User.find(:id)
-    @prompts = Prompt.find_all(current_user)
+    @prompts = current_user.prompts
   end
 
   def create
@@ -16,5 +15,16 @@ class PromptsController < ApplicationController
     else
      flash[:error] = "Prompt not saved!"
     end  
-  end 
+  end
+
+  def destroy
+    @prompt = Prompt.find(params[:id])
+    if @prompt.destroy
+      redirect_to user_prompts_path
+      flash[:success] = "Prompt deleted!"
+    else
+      redirect_to user_prompts_path
+      flash[:error] = "Prompt failed to delete!"
+    end
+  end
 end
