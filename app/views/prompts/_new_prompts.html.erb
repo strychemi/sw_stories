@@ -1,0 +1,4 @@
+<% if user_signed_in? %>
+  <header>Click the button below to generate prompt!</header>
+  <%= link_to "Generate Prompt", user_generate_path(current_user) %>
+<% end %>

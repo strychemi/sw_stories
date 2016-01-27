@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :prompts
+    get '/generate' => 'prompts#generate'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
