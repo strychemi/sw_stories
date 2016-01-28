@@ -14,7 +14,7 @@ class DraftsController < ApplicationController
     @draft = Draft.new(story: params[:draft], prompt_id: params[:prompt_id])
     if @draft.save
       flash[:success] = "Draft saved!"
-      redirect_to user_prompt_draft_path(id: Draft.last.id, prompt_id: params[:prompt_id])
+      redirect_to prompt_draft_path(id: Draft.last.id, prompt_id: params[:prompt_id])
     else
       flash.now[:error] = "Draft not saved!"
       render :new
@@ -36,7 +36,7 @@ class DraftsController < ApplicationController
     @draft = Draft.find(params[:id])
     if @draft.update(id: params[:id], prompt_id: params[:prompt_id], story: params[:draft])
       flash[:success] = "Draft updated!"
-      redirect_to user_prompt_draft_path(id: Draft.last.id, prompt_id: params[:prompt_id])
+      redirect_to prompt_draft_path(id: Draft.last.id, prompt_id: params[:prompt_id])
     else
       flash.now[:error] = "Draft not updated!"
       render :edit
@@ -48,7 +48,7 @@ class DraftsController < ApplicationController
     @draft = Draft.find(params[:id])
     if @draft.destroy
       flash[:success] = "Draft deleted!"
-      redirect_to user_prompt_drafts_path(prompt_id: params[:prompt_id])
+      redirect_to prompt_drafts_path(prompt_id: params[:prompt_id])
     else
       flash.now[:error] = "Draft not deleted!"
       render :show

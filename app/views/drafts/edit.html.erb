@@ -1,6 +1,6 @@
 <h2><%= @prompt.text %></h2>
 
-<form method="post" action="<%=user_prompt_draft_path(id: @draft.id, prompt_id: @draft.prompt_id)%>">
+<form method="post" action="<%=prompt_draft_path(id: @draft.id, prompt_id: @draft.prompt_id)%>">
   <input type="hidden"
     name="authenticity_token"
     value="<%= form_authenticity_token %>">
@@ -9,6 +9,6 @@
   <input type="submit" value="Save">
 </form>
 
-<%= link_to "All Drafts", user_prompt_drafts_path(prompt_id: @draft.prompt_id)%>
-<%= link_to "Edit Draft", edit_user_prompt_draft_path(id: @draft.id)%>
-<%= link_to "Delete Draft", user_prompt_draft_path(id: @draft.id), method: :delete%>
+<%= link_to "All Drafts", prompt_drafts_path(prompt_id: @draft.prompt_id)%>
+<%= link_to "Edit Draft", edit_prompt_draft_path(id: @draft.id)%>
+<%= link_to "Delete Draft", prompt_draft_path(id: @draft.id), method: :delete%>

@@ -11,7 +11,7 @@ class PromptsController < ApplicationController
   def create
     @prompt = Prompt.new(text: params[:prompt], user_id: current_user.id)
     if @prompt.save
-      redirect_to user_prompts_path 
+      redirect_to prompts_path 
     else
      flash[:error] = "Prompt not saved!"
     end  
@@ -20,10 +20,10 @@ class PromptsController < ApplicationController
   def destroy
     @prompt = Prompt.find(params[:id])
     if @prompt.destroy
-      redirect_to user_prompts_path
+      redirect_to prompts_path
       flash[:success] = "Prompt deleted!"
     else
-      redirect_to user_prompts_path
+      redirect_to prompts_path
       flash[:error] = "Prompt failed to delete!"
     end
   end
