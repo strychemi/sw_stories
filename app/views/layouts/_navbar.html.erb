@@ -1,0 +1,7 @@
+<% if !user_signed_in? %>
+  <%= link_to "Sign up!", new_user_registration_path %>
+  <%= link_to "Sign in!", new_user_session_path %>
+<% else %>
+  <%= link_to "Log Out!", destroy_user_session_path, method: "delete" %>
+  <%= link_to "Back To All Prompts", user_prompts_path %>
+<% end %>
