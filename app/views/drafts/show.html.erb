@@ -1,2 +1,5 @@
 <h2><%= @prompt.text %></h2>
 <p><%= @draft.story %></p>
+<%= link_to "All Drafts", user_prompt_drafts_path(prompt_id: @draft.prompt_id)%>
+<%= link_to "Edit Draft", edit_user_prompt_draft_path(id: @draft.id)%>
+<%= link_to "Delete Draft", user_prompt_draft_path(id: @draft.id), method: :delete%>
