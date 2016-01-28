@@ -5,24 +5,18 @@ class Swapi
   BASE_URI = "http://swapi.co/api"
 
   def initialize
-    @nouns = {
-      "people" => JSON.parse(HTTParty.get("#{BASE_URI}/people/").body)["count"],
-      "planets" => JSON.parse(HTTParty.get("#{BASE_URI}/planets/").body)["count"],
-      "vehicles" => JSON.parse(HTTParty.get("#{BASE_URI}/vehicles/").body)["count"],
-      "starships" => JSON.parse(HTTParty.get("#{BASE_URI}/starships/").body)["count"],
-      "species" => JSON.parse(HTTParty.get("#{BASE_URI}/species/").body)["count"]
+    @noun = {
+      "people" => JSON.parse(HTTParty.get("#{BASE_URI}/people/").body)["results"],
+      "planets" => JSON.parse(HTTParty.get("#{BASE_URI}/planets/").body)["results"],
+      "vehicles" => JSON.parse(HTTParty.get("#{BASE_URI}/vehicles/").body)["results"],
+      "starships" => JSON.parse(HTTParty.get("#{BASE_URI}/starships/").body)["results"],
+      "species" => JSON.parse(HTTParty.get("#{BASE_URI}/species/").body)["results"]
     }
   end
 
   def get_noun(param)
-    attribute = nil
-    until !attribute.nil?
-      sleep(0.5)
-      random = rand(1..@nouns[param].to_i)
-      response = HTTParty.get("#{BASE_URI}/#{param}/#{random}")
-      attribute = JSON.parse(response.body)["name"]
-    end
-    attribute
+    response = @noun[param].sample
+    attribute = response["name"]
   end
 
   def generate_prompt
